@@ -1,0 +1,22 @@
+<div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="arrow">&lt;</a>
+    {% if page_obj.number > 3 %}
+    <a href="?page=1">1</a>
+    {% if page_obj.number > 4 %}
+    <span class="ellipsis">...</span>
+    {% endif %} {% endif %}
+    <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+    {% endif %}
+
+    <a href="?page={{ page_obj.number }}" class="current">{{ page_obj.number }}</a>
+
+    {% if page_obj.has_next %} {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+    <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+    {% endif %} {% if page_obj.number < page_obj.paginator.num_pages|add:"-2" %}
+    <span class="ellipsis">...</span>
+    {% endif %}
+    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+    <a href="?page={{ page_obj.next_page_number }}" class="arrow">&gt;</a>
+    {% endif %}
+</div>

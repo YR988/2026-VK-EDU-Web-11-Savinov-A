@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'ask.css' %}" />
+{% endblock %} {% block content %}
+<div>
+    <div class="Word">
+        <h1>New Question</h1>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="form">
+        <form action="" class="questionForm">
+            <div>
+                <span>Title</span>
+                <input type="text" name="title" placeholder="Title" />
+            </div>
+            <div>
+                <span>Text</span>
+                <textarea name="question" id="question" placeholder="Question"></textarea>
+            </div>
+            <div>
+                <span>Tags</span>
+                <input type="text" name="tags" placeholder="Tags" />
+            </div>
+            <button type="submit" class="ask-button">Ask!</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="error"><p>Вы не авторизованы</p></div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load static %}
+
+<header>
+    <div class="logo">
+        <a href="{% url 'index' %}"><h1>AskPupkin</h1></a>
+    </div>
+    <div class="search">
+        <input type="text" name="search" placeholder="Search" />
+        <button type="submit">Ask!</button>
+    </div>
+    {% include 'layout/profile.html' %}
+</header>

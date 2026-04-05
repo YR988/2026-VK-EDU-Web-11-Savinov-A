@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="Word">
+    <a href="{% url 'index' %}"><h2>All Questions</h2></a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'ask' %}"><h2>New Question</h2></a>
+    {% endif %}
+    <a href="/?filter=hot_question"><h2>Hot Question</h2> </a>
+</div>
+<div class="question-list">{% for question in questions %} {% include 'layout/question-list.html' %} {% endfor %}</div>
+{% include 'layout/pagination.html' with page_obj=questions%} {% endblock %}

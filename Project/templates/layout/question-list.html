@@ -1,0 +1,45 @@
+{% load static %}
+
+<div class="question-list">
+    <div class="question">
+        <div class="rate">
+            <img src="{% static 'i.webp' %}" alt="avatar" />
+            <input type="number" disabled="True" value="{{ question.raiting }}" />
+            <div class="rate-form">
+                <button class="dislike">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"
+                            stroke="currentColor"
+                            stroke-width="2" />
+                    </svg>
+                </button>
+                <button class="like">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+                            stroke="currentColor"
+                            stroke-width="2" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="question-card">
+            <div class="question-main">
+                <h2>{{ question.title }}</h2>
+                <span>{{ question.detailed }}</span>
+            </div>
+            <div class="question-footer">
+                <a href="{% url 'question_detail' question.id %}">answer ({{ question.answers_count }})</a>
+                <div class="question-tags">
+                    <p>Tags:</p>
+                    {% if question.tags.all %} {% for tag in question.tags.all %}
+                    <a href="/?tag={{ tag.title }}">{{ tag.title }}</a>
+                    {% endfor %} {% else %}
+                    <span>No tags</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

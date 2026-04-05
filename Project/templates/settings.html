@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'settings.css' %}" />
+{% endblock %} {% block content %}
+<div>
+    <div class="Word">
+        <h1>Settings: {{ user.username}}</h1>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="form">
+        <form action="" class="profile-form">
+            <div>
+                <span>Login</span>
+                <input type="text" name="login" placeholder="Login" value="{{ user.username }}" />
+            </div>
+            <div>
+                <span>Email</span>
+                <input type="text" name="email" placeholder="Email" value="{{ user.email }}" />
+            </div>
+            <div>
+                <span>NickName</span>
+                <input type="text" name="NickName" placeholder="NickName" value="{{ user.first_name }}" />
+            </div>
+            <div>
+                <span>Password</span>
+                <input type="password" name="password" placeholder="Password" />
+            </div>
+            <div>
+                <span>Upload avatar</span>
+                <img src="{{ user.avatar.url }}" alt="avatar" />
+            </div>
+            <div class="avatar">
+                <input type="file" name="choosefile" />
+                <button type="submit" name="choose" class="chooseButton">choose</button>
+            </div>
+            <button type="submit" name="save" class="saveButton">Save</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="error"><p>Вы не авторизованы</p></div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<aside>
+    <div class="tags-container">
+        <h2>Popular Tags</h2>
+        <div class="tags">
+            {% for tag in tags %}
+            <a href="/?tag={{ tag.title }}" class="tag-{{ forloop.counter }}">{{tag.title}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="ref-container">
+        <h2>Best members</h2>
+        <div class="ref">
+            {% for user in users %}
+            <a href="/?author={{ user.username }}">{{ user.username }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</aside>

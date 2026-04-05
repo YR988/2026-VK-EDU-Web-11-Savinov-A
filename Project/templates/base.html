@@ -1,0 +1,25 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'index.css' %}" />
+        {% endblock %}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet" />
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}AskPupkin{% endblock %}</title>
+    </head>
+</html>
+<body>
+    {% include 'layout/header.html' %}
+    <main>
+        <div class="main-container">{% block content %} {% endblock %}</div>
+        {% include 'layout/sidebar.html' %}
+    </main>
+    {% include 'layout/footer.html' %}
+</body>

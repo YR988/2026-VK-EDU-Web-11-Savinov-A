@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'login.css' %}" />
+{% endblock %} {% block content %}
+<div>
+    <div class="loginWord">
+        <h1>Log in</h1>
+    </div>
+    <div class="error">
+        <span>Sorry, wrong password</span>
+    </div>
+    <div class="form">
+        <form action="" class="loginForm">
+            <div>
+                <span>Login</span>
+                <input type="text" name="login" placeholder="Login" />
+            </div>
+            <div>
+                <span>Password</span>
+                <input type="password" name="password" placeholder="Password" />
+            </div>
+            <button type="submit">Log in!</button>
+        </form>
+        <a href="{% url 'signup' %}">create new account</a>
+    </div>
+</div>
+{% endblock %}
